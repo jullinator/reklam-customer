@@ -4,10 +4,25 @@
     <meta charset="utf-8">
     <title>reklam-customer</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href='index.css', rel='stylesheet' />
     <!--link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet"-->
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBHbCmu6XAlxDDcjfZaWh6P4tvoY_EgMMU",
+        authDomain: "pi-reklam.firebaseapp.com",
+        databaseURL: "https://pi-reklam.firebaseio.com",
+        projectId: "pi-reklam",
+        storageBucket: "pi-reklam.appspot.com",
+        messagingSenderId: "460806227224"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script src="/dist/build.js"></script>
   </body>
 </html>
