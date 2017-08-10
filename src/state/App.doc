@@ -1,4 +1,18 @@
 Watch this user's images. They are on a firebase ref /userImages.
+- db.ref('userImages').child(user.id).on('value', snap => this.userImages = snap.val())
 They will be used for displaying user's uploaded images.
 The url for these can be retrived from firebase storage, using image name and user id-
+- storage.ref(`${userId}/${imageName}`).getUrl() //for each
 The image names will be used as options for which image a spot shall have.
+- <option v-for="image in userImages" value="image.name" label="image.name" />
+
+VIEW FOR UPLOADING A NEW IMAGE WITH NEW NAME
+<form stopSubmit.native>
+  <input type="file" v-model="?" @input="?" />
+  <input type="text" />
+  <button type="submit"> upload </button>
+</form>
+
+HANDLER FOR UPLOADING TO FIREBASE
+- App.uploadImage(image, imageName)
+-> storage.ref(userId).child(imageName).set(image)
