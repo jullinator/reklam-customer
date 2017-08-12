@@ -8,7 +8,7 @@ The image names will be used as options for which image a spot shall have.
 
 VIEW FOR UPLOADING A NEW IMAGE WITH NEW NAME
 <form stopSubmit.native>
-  <input type="file" v-model="?" @input="?" />
+  <input type="file" v-model="?" @change="changeFile(this.$event.target.files)" />
   <input type="text" />
   <button type="submit"> upload </button>
 </form>
@@ -16,3 +16,26 @@ VIEW FOR UPLOADING A NEW IMAGE WITH NEW NAME
 HANDLER FOR UPLOADING TO FIREBASE
 - App.uploadImage(image, imageName)
 -> storage.ref(userId).child(imageName).set(image)
+
+
+
+FILE UPLOAD EXAMPLE
+onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length)
+        return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      var image = new Image();
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = (e) => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function (e) {
+      this.image = '';
+    }
