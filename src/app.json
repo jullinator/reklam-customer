@@ -1,0 +1,15 @@
+{
+  "stores":{
+    "userImages":{
+      "imageName":"name of the image"
+    },
+    "spots":{
+      "computer":"",
+      "user":"user.id",
+      "imageName":""
+    }
+  },
+  "info":{
+    "image-storage-path":"user.id/imageName"
+  }
+}

@@ -1,22 +1,22 @@
-Watch this user's images. They are on a firebase ref /userImages.
-- db.ref('userImages').child(user.id).on('value', snap => this.userImages = snap.val())
-They will be used for displaying user's uploaded images.
-The url for these can be retrived from firebase storage, using image name and user id-
-- storage.ref(`${userId}/${imageName}`).getUrl() //for each
-The image names will be used as options for which image a spot shall have.
-- <option v-for="image in userImages" value="image.name" label="image.name" />
+1. Watch this user's images. They are on a firebase ref /userImages.
+2. They will be used for displaying user's uploaded images.
+3. The url for these can be retrived from firebase storage, using image name and user id-
+4. The image names will be used as options for which image a spot shall have.
+5. VIEW FOR UPLOADING A NEW IMAGE WITH NEW NAME
+6. HANDLER FOR UPLOADING TO FIREBASE
 
-VIEW FOR UPLOADING A NEW IMAGE WITH NEW NAME
-<form stopSubmit.native>
-  <input type="file" v-model="?" @change="changeFile(this.$event.target.files)" />
-  <input type="text" />
-  <button type="submit"> upload </button>
-</form>
 
-HANDLER FOR UPLOADING TO FIREBASE
-- App.uploadImage(image, imageName)
--> storage.ref(userId).child(imageName).set(image)
 
+#1 db.ref('userImages').child(user.id).on('value', snap => this.userImages = snap.val())
+#3 storage.ref(`${userId}/${imageName}`).getUrl() //for each
+#4 <option v-for="image in userImages" value="image.name" label="image.name" />
+#5 <form stopSubmit.native>
+    <input type="file" v-model="?" @change="changeFile(this.$event.target.files)" />
+    <input type="text" />
+    <button type="submit"> upload </button>
+  </form>
+#6   App.uploadImage(image, imageName)
+  -> storage.ref(userId).child(imageName).set(image)
 
 
 FILE UPLOAD EXAMPLE

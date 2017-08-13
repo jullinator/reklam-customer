@@ -1,0 +1,12 @@
+#STORES
+userFiles:
+  -fileName
+  -extension
+  -type (video,image)
+spots:
+  -computer
+  -user
+  -file.id
+
+The path for image storage:
+  user.id/imageName

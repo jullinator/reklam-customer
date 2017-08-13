@@ -6,7 +6,7 @@ var App = {
   username:'jullinator',
   userReady(user){
     var userId = user.id //check if correct
-    db.ref('userImages').child(userId).on('value', snap =>{this.userImages = snapToArray(snap)})
+    db.ref('user-images').child(userId).on('value', snap =>{this.userImages = snapToArray(snap)})
   },
   //firebase stores
   userImages:[]
