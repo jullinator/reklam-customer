@@ -4,6 +4,7 @@
     <input type="file" @change="fileChange">
     <label for="name">Namn på filen</label>
     <input type="text" v-model="name" />
+    <button type="submit">Ladda up</button>
   </form>
 </template>
 
@@ -11,9 +12,20 @@
 export default {
   data() {
     return {
+        files:[],
+        name: ''
     };
   },
-  methods: {}
+  methods: {
+      fileChange(e){
+         this.files = e.target.files
+     },
+     submit(){
+         var {name, files} = this
+         var image = files[0]
+         App.uploadImage({image, name})
+     }
+  }
 };
 </script>
 

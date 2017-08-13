@@ -2,22 +2,43 @@ var db = firebase.database(),
     storage = firebase.storage(),
     auth = firebase.auth()
 
-var App = {
-  username:'jullinator',
-  userReady(user){
-    var userId = user.id //check if correct
-    db.ref('user-images').child(userId).on('value', snap =>{this.userImages = snapToArray(snap)})
-  },
-  //firebase stores
-  userImages:[]
+class _App {
+    constructor(){
+        //firebase stores
+        this.userFiles = {}
+
+        //misc
+        this.user = {}
+    }
+
+    userReady(user){
+        this.user = user //check if correct
+        db.ref('userFiles').child(this.user.uid).on('value', (snap) =>{
+            this.userFiles = {}
+            snap.forEach(image){
+                var obj = {
+                    get url(){
+                        return storage.
+                    }
+                }
+                Object.assign(obj, image.val())
+
+                this.userFiles[image.key] = obj
+            }
+        })
+    }
+
+    uploadImage({image, name}){
+        storage.ref(this.user.uid + '/' + name).put(image).then( (snap)=>{
+            db.ref('userFiles'+'/'+this.user.uid).push({
+                fileName:name,
+                extension:'jpg',
+                type:'image'
+            })
+        })
+    }
+
 }
 
-function snapToArray ({snap, array}){
-  array = []
-  snap.val().forEach(child=>{
-    Object.keys()
-    array.push({id:child.key, })
-  })
-}
 
-global.App = App
+global.App = new _App()
